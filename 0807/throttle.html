@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+    }
+
+    #button {
+      width: 100px;
+      height: 100px;
+      line-height: 100px;
+      text-align: center;
+      background-color: #bfa;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="button">
+    button
+  </div>
+
+  <script>
+    var btn = document.getElementById('button');
+
+    btn.onmousemove = throttle(function (e) {
+      // console.log('---11122', this, e);
+    }, 3000);
+
+    function throttle(func, wait) {
+      var timeout, context, args, result;
+      var previous = 0;
+
+      var later = function() {
+          previous = +new Date();
+          timeout = null;
+          // console.log('函数调用了！！');
+          func.apply(context, args)
+      };
+
+      var throttled = function() {
+          var now = +new Date();
+          // 下次触发 func 剩余的时间
+          var remaining = wait - (now - previous);
+          context = this;
+          args = arguments;
+          // 如果没有剩余的时间了或者你改了系统时间
+          // 第一次就执行
+          if (remaining <= 0 || remaining > wait) {
+            console.log('首次执行');
+            // 这里判断是否有 timeout，有的话就需要初始化定时器，否则会执行两次
+              if (timeout) {
+                  clearTimeout(timeout);
+                  timeout = null;
+              }
+              previous = now;
+              func.apply(context, args);
+          } else if (!timeout) {
+              console.log('！timeou 执行');
+              timeout = setTimeout(later, remaining);
+          }
+      };
+      return throttled;
+    }
+
+
+    // // 时间戳
+    // function throttle1 (func, wait) {
+    //   let pre = Date.now()
+    //   return function (...args) {
+    //     const context = this
+    //     const now = +new Date()
+    //     if (wait < now - pre) {
+    //       func.apply(context, args)
+    //       pre = Date.now()
+    //     }
+    //   }
+    // }
+
+    // 定时器
+    // function throttle2 (func, wait) {
+    //   let timer = null
+    //   return function (...args) {
+    //     const context = this
+    //     if (!timer) {
+    //       timer = setTimeout(function () {
+    //         func.apply(context, args)
+    //         timer = null
+    //       }, wait)
+    //     }
+    //   }
+    // }
+  </script>
+
+</body>
+
+</html>

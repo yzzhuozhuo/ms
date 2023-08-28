@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 绝对定位 + margin: auto */
+    /* .father {
+      width: 500px;
+      height: 300px;
+      border: 1px solid #0a3b98;
+      position: relative;
+    }
+
+    .son {
+      width: 100px;
+      height: 40px;
+      background: #f0a238;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+    } */
+
+    /* 绝对定位 + margin 负边距 */
+    /* 这种方式需要知道子元素的宽高 */
+    /* .father {
+      width: 500px;
+      height: 300px;
+      border: 1px solid #0a3b98;
+      position: relative;
+    }
+
+    .son {
+      width: 100px;
+      height: 100px;
+      background: #f0a238;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-top: -50px;
+      margin-left: -50px;
+    } */
+
+    /* 利用定位 + transform */
+    /* 这种方式不需要知道子元素的宽高 */
+    /* translate(-50%, -50%)将会将元素位移自己宽度和高度的-50% */
+    /* .father {
+      width: 500px;
+      height: 300px;
+      border: 1px solid #0a3b98;
+      position: relative;
+    }
+    .son {
+      width: 100px;
+      height: 100px;
+      background: #f0a238;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); 
+    } */
+
+    /* flex布局 */
+    /* .father {
+      width: 500px;
+      height: 300px;
+      border: 1px solid #0a3b98;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .son {
+      width: 100px;
+      height: 100px;
+      background: #f0a238;
+    } */
+  </style>
+</head>
+
+<body>
+  <div class="father">
+    <div class="son"></div>
+  </div>
+</body>
+
+</html>

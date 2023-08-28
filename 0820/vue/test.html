@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div onclick="setInFile1()">11</div>
+  <script>
+    function getParamsFromUrl () {
+      var ret = {}
+      var index = window.location.href.indexOf('?')
+      if (index === -1) {
+        return ret
+      }
+      var endIndex = window.location.href.indexOf('#')
+      if (endIndex === -1) {
+        endIndex = window.location.href.length
+      }
+      var queryStr = window.location.href.slice(index + 1, endIndex)
+      ret = getParams(queryStr)
+      return ret
+    }
+
+    function getParams (queryStr) {
+      var ret = {}
+      var hash
+      var hashes = queryStr.split('&')
+      for (let i = 0; i < hashes.length; i++) {
+        hash = hashes[i].split('=')
+        if (!hash[1]) {
+          continue
+        }
+        ret[hash[0]] = decodeURIComponent(hash[1])
+      }
+      console.log('url params:', ret)
+      return ret
+    }
+
+    function setInFile1() {
+      var queryObj = getParamsFromUrl()
+      var param_str = queryObj.yycq
+      console.log('param_str', param_str);
+      if(param_str == '1002'){
+        console.log(param_str);
+        iqiyiTpct.track(19901);
+      }
+      setInFile();
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "esmodule",
+  "version": "1.0.0",
+  "description": "",
+  "main": "c.js",
+  "type": "module",
+  "scripts": {
+    "test": "node b.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

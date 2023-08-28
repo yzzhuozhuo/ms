@@ -1,0 +1,1 @@
+export * as xxx from './a'

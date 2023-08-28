@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+    }
+
+    #button {
+      width: 100px;
+      height: 100px;
+      line-height: 100px;
+      text-align: center;
+      background-color: #bfa;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="button">
+    button
+  </div>
+
+  <script>
+    var btn = document.getElementById('button');
+
+    btn.onmousemove = debounce(function (e) {
+      console.log('---111', this, e);
+    }, 1000);
+
+    function debounce(fun, wait) {
+      let timer = null
+      return function (...args) {
+        const context = this
+        if (timer) clearTimeout(timer)
+        timer = setTimeout(function () {
+          fun.apply(context, args)
+          // 执行完初始化 timer
+          timer = null
+        }, wait)
+      }
+    }
+    // 第四版
+    // function debounce(func, wait, immediate) {
+    //   let timer = null
+
+    //   return function (...args) {
+    //     const context = this
+    //     if (timer) clearTimeout(timer)
+    //     if (immediate) {
+    //       const canRun = !timer
+
+    //       timer = setTimeout(function() {
+    //         timer = null
+    //       }, wait)
+
+    //       if (canRun) func.apply(context, args)
+    //     } else {
+    //       timer = setTimeout(function() {
+    //         func.apply(context, args)
+    //         timer = null
+    //       }, wait)
+    //     }
+    //   }
+    // }
+  </script>
+
+</body>
+
+</html>
