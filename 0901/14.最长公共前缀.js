@@ -19,37 +19,74 @@
 
 // var longestCommonPrefix = function(strs) {
 //   if (strs.length <= 1) return strs[0] || ''
-//   let str = strs[0]
-//   let i = 0
-//   let j = 0
+//   let prefix = strs[0]
+//   let i = 1
+
 //   while(i < strs.length) {
-//     while(j < str.length) {
-//       if (str[j] !== strs[i + 1][j]) {
-//         str = str.slice(0, j)
-//       }
+//     let j = 0
+//     while(j < prefix.length && j < strs[i].length && prefix[j] === strs[i][j] ) {
 //       j++
 //     }
+//     prefix = prefix.slice(0, j); // 更新 prefix
 //     i++
 //   }
-//   return str
+//   return prefix
 // };
+
+// var longestCommonPrefix = function(strs) {
+//   if (strs.length <= 1) return strs[0] || '';
+
+//   let prefix = strs[0]; // 将结果存储在 prefix 中
+
+//   for (let i = 1; i < strs.length; i++) {
+//     let j = 0;
+//     while (j < prefix.length && j < strs[i].length && prefix[j] === strs[i][j]) {
+//       j++;
+//     }
+//     prefix = prefix.slice(0, j); // 更新 prefix
+//   }
+
+//   return prefix;
+// };
+
 
 /**
  * @param {string[]} strs
  * @return {string}
  */
-var longestCommonPrefix = function (strs) {
-  if (!strs.length) return ''
-  let res = strs[0]
-  for (let str of strs) {
-    for (let i = 0; i < res.length; i++) {
-      if (str[i] !== res[i]) {
-        res = res.slice(0, i)
+// var longestCommonPrefix = function (strs) {
+//   if (!strs.length) return ''
+//   let res = strs[0]
+//   for (let str of strs) {
+//     for (let i = 0; i < res.length; i++) {
+//       if (str[i] !== res[i]) {
+//         res = res.slice(0, i)
+//       }
+//     }
+//   }
+//   return res
+// };
+
+var longestCommonPrefix = function(strs) {
+  if (strs.length <= 1) return strs[0] || '';
+
+  let str = strs[0];
+  let i = 1;
+
+  while (i < strs.length) {
+    let j = 0;
+    while (j < str.length && j < strs[i].length) {
+      if (str[j] !== strs[i][j]) {
+        str = str.slice(0, j);
       }
+      j++;
     }
+    i++;
   }
-  return res
+
+  return str;
 };
+
 
 // var strs = ["flower", "flow"]
 // var strs = ["aa", "aaa", "aa"]
@@ -57,7 +94,7 @@ var longestCommonPrefix = function (strs) {
 // var strs = ["aa"]
 // var strs = ["dog", "racecar", "car"]
 // var strs = ["flower", "flower", "flower"]
-// var strs = ["flower", "flow", "flight"]
+var strs = ["flower", "flow", "flight"]
 
 let res = longestCommonPrefix(strs)
 
