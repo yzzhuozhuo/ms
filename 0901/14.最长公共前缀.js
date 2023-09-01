@@ -17,21 +17,21 @@
  
 */
 
-// var longestCommonPrefix = function(strs) {
-//   if (strs.length <= 1) return strs[0] || ''
-//   let prefix = strs[0]
-//   let i = 1
+var longestCommonPrefix1 = function(strs) {
+  if (strs.length <= 1) return strs[0] || ''
+  let prefix = strs[0]
+  let i = 1
 
-//   while(i < strs.length) {
-//     let j = 0
-//     while(j < prefix.length && j < strs[i].length && prefix[j] === strs[i][j] ) {
-//       j++
-//     }
-//     prefix = prefix.slice(0, j); // 更新 prefix
-//     i++
-//   }
-//   return prefix
-// };
+  while(i < strs.length) {
+    let j = 0
+    while(j < prefix.length && j < strs[i].length && prefix[j] === strs[i][j] ) {
+      j++
+    }
+    prefix = prefix.slice(0, j); // 更新 prefix
+    i++
+  }
+  return prefix
+};
 
 // var longestCommonPrefix = function(strs) {
 //   if (strs.length <= 1) return strs[0] || '';
@@ -70,21 +70,21 @@
 var longestCommonPrefix = function(strs) {
   if (strs.length <= 1) return strs[0] || '';
 
-  let str = strs[0];
+  let prefix = strs[0];
   let i = 1;
 
   while (i < strs.length) {
     let j = 0;
-    while (j < str.length && j < strs[i].length) {
-      if (str[j] !== strs[i][j]) {
-        str = str.slice(0, j);
+    while (j < prefix.length || j < strs[i].length) {
+      if (prefix[j] !== strs[i][j]) {
+        prefix = prefix.slice(0, j);
       }
       j++;
     }
     i++;
   }
 
-  return str;
+  return prefix;
 };
 
 
@@ -94,8 +94,10 @@ var longestCommonPrefix = function(strs) {
 // var strs = ["aa"]
 // var strs = ["dog", "racecar", "car"]
 // var strs = ["flower", "flower", "flower"]
-var strs = ["flower", "flow", "flight"]
+// var strs = ["flower", "flow", "flight"]
 
-let res = longestCommonPrefix(strs)
+var strs = ["ab", "a"]
+
+let res = longestCommonPrefix1(strs)
 
 console.log(res)
