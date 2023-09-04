@@ -8,27 +8,34 @@
  * @param {string} s
  * @return {boolean}
  */
-let s = "A man, a plan, a canal: Panama"
+// let s = "race a car"
+// let s = "aa"
+let s = 'abb'
+// let s = 'aba'
+// raceacar
 // function isPalindrome (s) {
 //   const reg = new RegExp(/[,. :]/g)
-//   s = s.toLocaleLowerCase().replace(reg, '')
+//   s = s.replace(/[^a-zA-Z0-9]/g, '').replace(/\s/g, '').toLocaleLowerCase()
 //   return s.split('').reverse().join('') == s
 // }
 
 function isPalindrome (s) {
-  const reg = new RegExp(/[,. :]/g)
-  s = s.toLocaleLowerCase().replace(reg, '')
+  s = s.replace(/[^a-zA-Z0-9]/g, '').replace(/\s/g, '').toLocaleLowerCase()
+  if (s.length <= 1) return true
   let i = 0
   let j = s.length - 1
-  while (i < s.length) {
+  let res = false
+  while (i < s.length - 1) {
+    if (s[i] === s[j]) {
+      i <= j && (res = true)
+    } else {
+      res = false
+      break
+    }
     i++
     j--
-    if (s[i] !== s[j]) {
-      return false      
-    } else {
-      return true
-    }
   }
+  return res
 }
 
 const res = isPalindrome(s)
